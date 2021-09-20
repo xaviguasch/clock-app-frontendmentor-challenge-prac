@@ -1,24 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Clock App</title>
-</head>
-<body>
-  , it's currently
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
 
-  in
+    <link rel="stylesheet" href="./style.css" />
 
-  More
-  Less
+    <title>Frontend Mentor | Clock App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="upper">
+        <div class="upper__content">
+          <div class="quote">
+            <blockquote class="quote__sentence"></blockquote>
+            <figcaption class="quote__author"></figcaption>
+          </div>
 
-  Current timezone
-  Day of the year
-  Day of the week
-  Week number
-</body>
+          <main class="main main--upper">
+            <div class="greeting">
+              <div class="icon-area">
+                <div class="icon icon--sun">
+                  <svg width="23" height="24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M22.157 17.366a.802.802 0 00-.891-.248 8.463 8.463 0 01-2.866.482c-4.853 0-8.8-3.949-8.8-8.8a8.773 8.773 0 013.856-7.274.801.801 0 00-.334-1.454A7.766 7.766 0 0012 0C5.382 0 0 5.382 0 12s5.382 12 12 12c4.2 0 8.02-2.134 10.218-5.709a.805.805 0 00-.061-.925z"
+                      fill="#FFF"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </div>
+                <div class="icon icon--moon">
+                  <svg width="23" height="24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M22.157 17.366a.802.802 0 00-.891-.248 8.463 8.463 0 01-2.866.482c-4.853 0-8.8-3.949-8.8-8.8a8.773 8.773 0 013.856-7.274.801.801 0 00-.334-1.454A7.766 7.766 0 0012 0C5.382 0 0 5.382 0 12s5.382 12 12 12c4.2 0 8.02-2.134 10.218-5.709a.805.805 0 00-.061-.925z"
+                      fill="#FFF"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p class="greeting__sentence">
+                <span class="day-parts"></span>, it's currently
+              </p>
+            </div>
+            <div class="time">
+              <div class="current-time">
+                <p class="digits"><span class="timezone"></span></p>
+              </div>
+              <div class="area">
+                <p class="area__text">In <span class="area__city"></span></p>
+              </div>
+            </div>
+            <div class="btn-area">
+              <button class="btn btn--more">
+                More
+                <span class="icon icon--more">
+                  <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" fill-rule="evenodd">
+                      <circle fill="#303030" cx="20" cy="20" r="20" />
+                      <path stroke="#FFF" stroke-width="2" d="M14 23l6-6 6 6" />
+                    </g>
+                  </svg>
+                </span>
+              </button>
+              <button class="btn btn--less">
+                Less
+                <span class="icon icon--less">
+                  <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" fill-rule="evenodd">
+                      <circle fill="#303030" cx="20" cy="20" r="20" />
+                      <path stroke="#FFF" stroke-width="2" d="M14 23l6-6 6 6" />
+                    </g>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div class="lower">
+        <div class="lower__content">
+          <main class="main main--lower">
+            <div class="info info--a">
+              <div class="info__el">
+                <p class="info__prop">Current timezone</p>
+                <p id="timezone" class="info__result"></p>
+              </div>
+              <div class="info__el">
+                <p class="info__prop">Day of the year</p>
+                <p id="day-year" class="info__result"></p>
+              </div>
+            </div>
+            <div class="info info--a">
+              <div class="info__el">
+                <p class="info__prop">Day of the week</p>
+                <p id="day-week" class="info__result"></p>
+              </div>
+              <div class="info__el">
+                <p class="info__prop">Week number</p>
+                <p id="week-number" class="info__result"></p>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
 </html>
