@@ -152,6 +152,21 @@ ul {
   height: 100%;
 
   padding: 2em 1.635em 2.5em;
+
+  border: 3px solid red;
+}
+
+.upper.split {
+  height: 60%;
+  padding-top: 5.1875em;
+}
+
+.upper.split .time {
+  margin-top: 0.25em;
+}
+
+.upper.split .btn-area {
+  margin-top: 2em;
 }
 
 .upper__content {
@@ -167,6 +182,10 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.quote.split {
+  display: none;
 }
 
 .quote__author {
@@ -221,17 +240,47 @@ ul {
   gap: 1em;
   padding: 0 0.25em 0 1.15em;
   border: none;
+
+  cursor: pointer;
 }
 
-.icon--more {
+.btn--more.hide {
+  display: none;
+}
+
+.icon {
   margin-top: 0.2em;
+}
+.icon--more svg {
+  transform: rotate(180deg);
 }
 
 .btn--less {
   display: none;
 }
+.btn--less.show {
+  display: flex;
+}
 
 /* LOWER  */
 .lower {
   display: none;
+}
+
+.lower.visible {
+  display: block;
+  height: 40%;
+
+  border: 2px solid yellow;
+
+  color: red;
+
+  /* -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); */
+
+  backdrop-filter: brightness(90%) blur(10px) contrast(20%) grayscale(30%) opacity(100%);
+}
+
+.lower__content {
+  padding: 3em 1.635em;
 }
