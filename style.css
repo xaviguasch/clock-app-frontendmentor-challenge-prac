@@ -152,13 +152,11 @@ ul {
   height: 100%;
 
   padding: 2em 1.635em 2.5em;
-
-  border: 3px solid red;
 }
 
 .upper.split {
-  height: 60%;
-  padding-top: 5.1875em;
+  height: 63%;
+  padding-top: 6.1875em;
 }
 
 .upper.split .time {
@@ -237,7 +235,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 0.6em;
   padding: 0 0.25em 0 1.15em;
   border: none;
 
@@ -269,18 +267,23 @@ ul {
 
 .lower.visible {
   display: block;
-  height: 40%;
+  height: 37%;
 
-  border: 2px solid yellow;
-
-  color: red;
-
-  /* -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px); */
-
-  backdrop-filter: brightness(90%) blur(10px) contrast(20%) grayscale(30%) opacity(100%);
+  backdrop-filter: blur(20px) saturate(100%) contrast(25%) brightness(170%);
 }
 
 .lower__content {
   padding: 3em 1.635em;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.info__el {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
