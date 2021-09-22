@@ -4,6 +4,9 @@ const upper = document.querySelector('.upper')
 const quote = document.querySelector('.quote')
 const lower = document.querySelector('.lower')
 
+const quoteSentence = document.querySelector('.quote__sentence')
+const quoteAuthor = document.querySelector('.quote__author')
+const iconRefresh = document.querySelector('.icon--refresh')
 const partOfTheDay = document.querySelector('.part-of-the-day')
 const areaCity = document.querySelector('.area__city')
 const timeZone = document.querySelector('#timezone')
@@ -46,31 +49,25 @@ const transformTimestamp = (unixtime) => {
   return { formattedTime, dayPart }
 }
 
-const populateWithData = (data) => {
-  console.log(data)
+const getQuote = async () => {
+  const API = 'https://api.quotable.io/random'
 
-  let { country_code, region_name, time_zone } = data.geoData
-  let { unixtime, timezone, day_of_week, day_of_year, week_number, abbreviation } =
-    data.timesData
+  const request = await fetch(API)
 
-  const { formattedTime, dayPart } = transformTimestamp(unixtime)
-
-  if (dayPart === 'morning' || dayPart === 'afternoon') {
-    iconSun.style.display = 'block'
-    iconMoon.style.display = 'none'
+  if (!request.ok) {
+    throw new Error(request.status)
   } else {
-    iconMoon.style.display = 'block'
-    iconSun.style.display = 'none'
+    const quoteData = await request.json()
+
+    return quoteData
   }
+}
 
-  digits.innerHTML = `${formattedTime}<span class="timezone">${abbreviation}</span>`
+const populateQuote = (data) => {
+  const { content, author } = data
 
-  partOfTheDay.textContent = `Good ${dayPart}`
-  areaCity.textContent = `${region_name}, ${country_code}`
-  timeZone.textContent = time_zone
-  dayOfYear.textContent = day_of_year
-  dayOfWeek.textContent = day_of_week
-  weekNumber.textContent = week_number
+  quoteAuthor.textContent = author
+  quoteSentence.textContent = content
 }
 
 const getGeolocation = async () => {
@@ -81,12 +78,14 @@ const getGeolocation = async () => {
   if (!request.ok) {
     throw new Error(request.status)
   } else {
-    const data = await request.json()
-    return data
+    const geoData = await request.json()
+    return { geoData }
   }
 }
 
-const getTimes = async (geoData) => {
+const getTimes = async (data) => {
+  const { geoData } = data
+
   const API = 'http://worldtimeapi.org/api/timezone/'
 
   const [area, city] = geoData.time_zone.split('/')
@@ -102,9 +101,60 @@ const getTimes = async (geoData) => {
   }
 }
 
-getGeolocation()
-  .then((data) => getTimes(data))
-  .then((data) => populateWithData(data))
+const populateTimesAndGeo = (data) => {
+  const { geoData, timesData } = data
+
+  let { country_code, region_name, time_zone } = data.geoData
+
+  areaCity.textContent = `${region_name}, ${country_code}`
+  timeZone.textContent = time_zone
+
+  let { unixtime, timezone, day_of_week, day_of_year, week_number, abbreviation } =
+    data.timesData
+
+  const { formattedTime, dayPart } = transformTimestamp(unixtime)
+
+  digits.innerHTML = `${formattedTime}<span class="timezone">${abbreviation}</span>`
+
+  if (dayPart === 'morning' || dayPart === 'afternoon') {
+    iconSun.style.display = 'block'
+    iconMoon.style.display = 'none'
+  } else {
+    iconMoon.style.display = 'block'
+    iconSun.style.display = 'none'
+
+    partOfTheDay.textContent = `Good ${dayPart}`
+  }
+
+  dayOfYear.textContent = day_of_year
+  dayOfWeek.textContent = day_of_week
+  weekNumber.textContent = week_number
+}
+
+const refreshQuote = () => getQuote().then((data) => populateQuote(data))
+
+const chainOfAPIs = () => {
+  getQuote().then((data) => populateQuote(data))
+
+  getGeolocation()
+    .then((data) => getTimes(data))
+    .then((data) => populateTimesAndGeo(data))
+}
+
+const refreshTime = () => {
+  console.log('refresh time!')
+  getGeolocation()
+    .then((data) => getTimes(data))
+    .then((data) => populateTimesAndGeo(data))
+}
+
+chainOfAPIs()
+
+setInterval(() => {
+  refreshTime()
+}, 5 * 1000)
 
 btnMore.addEventListener('click', toggleInfo)
 btnLess.addEventListener('click', toggleInfo)
+
+iconRefresh.addEventListener('click', refreshQuote)
