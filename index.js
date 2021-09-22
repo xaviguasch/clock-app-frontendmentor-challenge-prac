@@ -4,6 +4,7 @@ const upper = document.querySelector('.upper')
 const quote = document.querySelector('.quote')
 const lower = document.querySelector('.lower')
 
+const partOfTheDay = document.querySelector('.part-of-the-day')
 const areaCity = document.querySelector('.area__city')
 const timeZone = document.querySelector('#timezone')
 const digits = document.querySelector('.digits')
@@ -11,6 +12,8 @@ const timezoneSpan = document.querySelector('.timezone')
 const dayOfYear = document.querySelector('#day-year')
 const dayOfWeek = document.querySelector('#day-week')
 const weekNumber = document.querySelector('#week-number')
+const iconSun = document.querySelector('.icon--sun')
+const iconMoon = document.querySelector('.icon--moon')
 
 const toggleInfo = () => {
   upper.classList.toggle('split')
@@ -28,7 +31,19 @@ const transformTimestamp = (unixtime) => {
 
   const formattedTime = `${hours}:${minutes.substr(-2)}`
 
-  return formattedTime
+  let dayPart = ''
+
+  if (hours >= 21 && hours <= 4) {
+    dayPart = 'night'
+  } else if (hours >= 5 && hours <= 11) {
+    dayPart = 'morning'
+  } else if (hours >= 12 && hours <= 16) {
+    dayPart = 'afternoon'
+  } else {
+    dayPart = 'evening'
+  }
+
+  return { formattedTime, dayPart }
 }
 
 const populateWithData = (data) => {
@@ -38,10 +53,19 @@ const populateWithData = (data) => {
   let { unixtime, timezone, day_of_week, day_of_year, week_number, abbreviation } =
     data.timesData
 
-  const formattedTime = transformTimestamp(unixtime)
+  const { formattedTime, dayPart } = transformTimestamp(unixtime)
+
+  if (dayPart === 'morning' || dayPart === 'afternoon') {
+    iconSun.style.display = 'block'
+    iconMoon.style.display = 'none'
+  } else {
+    iconMoon.style.display = 'block'
+    iconSun.style.display = 'none'
+  }
 
   digits.innerHTML = `${formattedTime}<span class="timezone">${abbreviation}</span>`
 
+  partOfTheDay.textContent = `Good ${dayPart}`
   areaCity.textContent = `${region_name}, ${country_code}`
   timeZone.textContent = time_zone
   dayOfYear.textContent = day_of_year
