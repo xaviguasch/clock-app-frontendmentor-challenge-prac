@@ -279,11 +279,12 @@ ul {
 .info {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
 }
 
 .info__el {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  margin-top: 0.5em;
 }
