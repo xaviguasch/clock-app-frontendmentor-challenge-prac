@@ -3,6 +3,7 @@ const btnLess = document.querySelector('.btn--less')
 const upper = document.querySelector('.upper')
 const quote = document.querySelector('.quote')
 const lower = document.querySelector('.lower')
+const wrapper = document.querySelector('.wrapper')
 
 const quoteSentence = document.querySelector('.quote__sentence')
 const quoteAuthor = document.querySelector('.quote__author')
@@ -101,6 +102,16 @@ const getTimes = async (data) => {
   }
 }
 
+const SetNightmode = (type) => {
+  if (type === 'on') {
+    wrapper.classList.add('nighttime')
+    lower.classList.add('nighttime')
+  } else {
+    wrapper.classList.remove('nighttime')
+    lower.classList.remove('nighttime')
+  }
+}
+
 const populateTimesAndGeo = (data) => {
   const { geoData, timesData } = data
 
@@ -119,12 +130,15 @@ const populateTimesAndGeo = (data) => {
   if (dayPart === 'morning' || dayPart === 'afternoon') {
     iconSun.style.display = 'block'
     iconMoon.style.display = 'none'
+
+    SetNightmode('off')
   } else {
     iconMoon.style.display = 'block'
     iconSun.style.display = 'none'
 
-    partOfTheDay.textContent = `Good ${dayPart}`
+    SetNightmode('on')
   }
+  partOfTheDay.textContent = `Good ${dayPart}`
 
   dayOfYear.textContent = day_of_year
   dayOfWeek.textContent = day_of_week

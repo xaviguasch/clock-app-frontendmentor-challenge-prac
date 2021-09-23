@@ -141,6 +141,13 @@ ul {
   background-size: cover;
 
   height: 100vh;
+
+  overflow: hidden;
+}
+
+.wrapper.nighttime {
+  background: url('./assets/mobile/bg-image-nighttime.jpg') no-repeat;
+  background-size: cover;
 }
 
 /* ================== */
@@ -274,8 +281,17 @@ ul {
   backdrop-filter: blur(20px) saturate(100%) contrast(25%) brightness(170%);
 }
 
+.lower.visible.nighttime {
+  background: var(--clr-black);
+}
+
+.lower.visible.nighttime .info__value,
+.lower.visible.nighttime .info__prop {
+  color: var(--clr-white);
+}
+
 .lower__content {
-  padding: 3em 1.635em;
+  padding: 2.5em 1.635em;
 }
 
 .info {
