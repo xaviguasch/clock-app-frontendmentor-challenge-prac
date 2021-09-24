@@ -50,6 +50,7 @@
   --clr-almost-black: hsla(0, 0%, 19%, 1);
   --clr-black: hsla(0, 0%, 0%, 1);
   --clr-grey: hsl(0, 0%, 60%);
+  --clr-dark-grey: hsl(0, 0%, 41%);
 }
 
 body {
@@ -130,6 +131,35 @@ ul {
 /* Buttons & inputs */
 /* ================== */
 
+.btn {
+  border-radius: 2em;
+  color: var(--clr-dark-grey);
+  font-family: inherit;
+  font-size: var(--fs-12);
+  font-weight: var(--fw-bold);
+  letter-spacing: 3.75px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0 0.25em 0 1.15em;
+  border: none;
+
+  cursor: pointer;
+}
+
+.btn.btn--more.hide {
+  display: none;
+}
+
+.btn.btn--less {
+  display: none;
+}
+.btn.btn--less.show {
+  display: flex;
+}
+
 /* ================== */
 /* Utility styles */
 /* ================== */
@@ -195,7 +225,7 @@ ul {
 }
 
 .quote__author {
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 .greeting {
@@ -234,39 +264,11 @@ ul {
   margin-top: 3em;
 }
 
-.btn {
-  border-radius: 2em;
-  font-family: inherit;
-  font-size: var(--fs-12);
-  font-weight: var(--fw-bold);
-  letter-spacing: 3.75px;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.6em;
-  padding: 0 0.25em 0 1.15em;
-  border: none;
-
-  cursor: pointer;
-}
-
-.btn--more.hide {
-  display: none;
-}
-
 .icon {
   margin-top: 0.2em;
 }
 .icon--more svg {
   transform: rotate(180deg);
-}
-
-.btn--less {
-  display: none;
-}
-.btn--less.show {
-  display: flex;
 }
 
 /* LOWER  */
@@ -305,4 +307,67 @@ ul {
   align-items: center;
 
   margin-top: 0.5em;
+}
+
+/* ================== */
+/* MEDIA QUERIES */
+/* ================== */
+
+@media (min-width: 768px) {
+  /* Typography */
+  .quote__sentence,
+  .quote__author,
+  .greeting__sentence,
+  .area__text {
+    font-size: var(--fs-18);
+  }
+
+  .quote__author {
+    font-size: var(--fs-18);
+  }
+
+  .greeting__sentence {
+    letter-spacing: 3.6px;
+  }
+
+  .digits {
+    font-size: 175px;
+    letter-spacing: -4.38px;
+  }
+
+  .timezone {
+    font-size: var(--fs-32);
+  }
+
+  .area__text {
+    letter-spacing: 3.6px;
+  }
+
+  .info__prop {
+    font-size: var(--fs-13);
+    letter-spacing: 2.6px;
+  }
+
+  .info__value {
+    font-size: var(--fs-40);
+  }
+
+  /* Buttons & inputs */
+  .btn {
+    font-size: var(--fs-16);
+    letter-spacing: 5px;
+
+    gap: 0.8em;
+    padding: 0.25em 0.45em 0.25em 1.25em;
+  }
+
+  /* Utility styles */
+  .wrapper {
+    background: linear-gradient(to bottom, hsl(240, 2%, 62%), rgb(122, 117, 117)),
+      url('./assets/tablet/bg-image-daytime.jpg');
+  }
+
+  .wrapper.nighttime {
+    background: url('./assets/tablet/bg-image-nighttime.jpg') no-repeat;
+  }
 }
