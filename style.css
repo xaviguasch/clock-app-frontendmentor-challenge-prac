@@ -313,6 +313,7 @@ ul {
 /* MEDIA QUERIES */
 /* ================== */
 
+/* Tablet */
 @media (min-width: 768px) {
   /* Typography */
   .quote__sentence,
@@ -365,11 +366,13 @@ ul {
   /* Utility styles */
   .wrapper {
     background: linear-gradient(to bottom, hsl(240, 2%, 62%), rgb(122, 117, 117)),
-      url('./assets/tablet/bg-image-daytime.jpg');
+      url('./assets/tablet/bg-image-daytime.jpg') no-repeat;
+    background-size: cover;
   }
 
   .wrapper.nighttime {
     background: url('./assets/tablet/bg-image-nighttime.jpg') no-repeat;
+    background-size: cover;
   }
 
   /* SECTIONS */
@@ -441,5 +444,82 @@ ul {
     margin-top: 0;
 
     min-width: 155px;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1030px) {
+  /* Typography */
+  .greeting__sentence {
+    font-size: var(--fs-20);
+    letter-spacing: 4px;
+  }
+
+  .digits {
+    font-size: 200px;
+    letter-spacing: -5px;
+  }
+
+  .timezone {
+    font-size: var(--fs-40);
+  }
+
+  .area__text {
+    font-size: var(--fs-24);
+    letter-spacing: 4.8px;
+  }
+
+  .info__prop {
+    font-size: var(--fs-15);
+    letter-spacing: 3px;
+  }
+
+  .info__value {
+    font-size: var(--fs-56);
+  }
+
+  /* Buttons & inputs */
+  .btn {
+    letter-spacing: 5px;
+
+    gap: 0.8em;
+    padding: 0.25em 0.45em 0.25em 1.325em;
+  }
+
+  /* SECTIONS */
+
+  /* Upper */
+  .upper {
+    padding: 3.5em 4.25em 6.125em;
+  }
+
+  .quote {
+    max-width: 575px;
+
+    justify-content: flex-start;
+    gap: 1em;
+  }
+
+  .main--upper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .greeting {
+    grid-column: 1 / 2;
+    grid-row: 1/ 2;
+  }
+
+  .time {
+    grid-column: 1 /2;
+    grid-row: 2/3;
+  }
+
+  .btn-area {
+    grid-column: 2/3;
+    grid-row: 2/2;
+    align-self: flex-end;
+    justify-self: end;
   }
 }
