@@ -47,6 +47,8 @@
   --fs-100: 6.25em;
 
   --clr-white: hsl(0, 0%, 100%);
+  --clr-white-transparent: hsla(0, 0%, 100%, 0.25);
+
   --clr-almost-black: hsla(0, 0%, 19%, 1);
   --clr-black: hsla(0, 0%, 0%, 1);
   --clr-grey: hsl(0, 0%, 60%);
@@ -486,11 +488,27 @@ ul {
     padding: 0.25em 0.45em 0.25em 1.325em;
   }
 
+  /* Utility styles */
+  .wrapper {
+    background: linear-gradient(to bottom, hsl(240, 2%, 62%), rgb(122, 117, 117)),
+      url('./assets/desktop/bg-image-daytime.jpg') no-repeat;
+    background-size: cover;
+  }
+
+  .wrapper.nighttime {
+    background: url('./assets/desktop/bg-image-nighttime.jpg') no-repeat;
+    background-size: cover;
+  }
+
   /* SECTIONS */
 
   /* Upper */
   .upper {
     padding: 3.5em 4.25em 6.125em;
+  }
+
+  .upper.split {
+    height: 50%;
   }
 
   .quote {
@@ -521,5 +539,56 @@ ul {
     grid-row: 2/2;
     align-self: flex-end;
     justify-self: end;
+  }
+
+  /* Lower */
+  .lower.visible {
+    display: block;
+    height: 50%;
+  }
+
+  .lower__content {
+    padding: 4.625em 10.5em 7.425em 4.25em;
+  }
+
+  .main--lower {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .info--a,
+  .info--b {
+    flex-direction: column;
+    gap: 2.625em;
+  }
+
+  .info--b {
+    border-left: 1px solid var(--clr-white-transparent);
+  }
+
+  .info__el {
+    min-width: 179px;
+  }
+
+  .info--b .info__el {
+    padding-left: 5.875em;
+  }
+}
+
+/* Wide monitor screens */
+@media (min-width: 1400px) {
+  /* SECTIONS */
+
+  /* Upper */
+  .upper {
+    padding: 3.5em 0 6.125em;
+    max-width: 1110px;
+    margin: 0 auto;
+  }
+
+  /* Lower */
+  .lower__content {
+    padding: 4.625em 10.3125em 4.65em;
   }
 }
