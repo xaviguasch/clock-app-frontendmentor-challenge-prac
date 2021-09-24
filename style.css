@@ -350,6 +350,7 @@ ul {
 
   .info__value {
     font-size: var(--fs-40);
+    line-height: 1.2;
   }
 
   /* Buttons & inputs */
@@ -369,5 +370,76 @@ ul {
 
   .wrapper.nighttime {
     background: url('./assets/tablet/bg-image-nighttime.jpg') no-repeat;
+  }
+
+  /* SECTIONS */
+
+  /* Upper */
+  .upper {
+    padding: 5em 8.175em 4em 4em;
+  }
+
+  .upper.split {
+    height: 58%;
+    padding-top: 9.15em;
+  }
+
+  .upper.split .time {
+    margin-top: 0em;
+  }
+
+  .upper.split .btn-area {
+    margin-top: 5em;
+  }
+
+  .desktop-phrase {
+    display: inline-block;
+  }
+
+  .time {
+    margin-top: 0;
+  }
+
+  .timezone {
+    margin-left: 0.6em;
+  }
+
+  .area {
+    margin-top: 0;
+  }
+
+  .btn-area {
+    margin-top: 5em;
+  }
+
+  /* Lower */
+  .lower.visible {
+    display: block;
+    height: 42%;
+  }
+
+  .lower__content {
+    padding: 7.425em 10.5em 7.425em 4em;
+  }
+
+  .info {
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+  }
+
+  .info--b {
+    margin-top: 3em;
+  }
+
+  .info__el {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 0;
+
+    min-width: 155px;
   }
 }
