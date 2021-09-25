@@ -548,7 +548,7 @@ ul {
   }
 
   .lower__content {
-    padding: 4.625em 10.5em 7.425em 4.25em;
+    padding: 4.625em 10.5em 4.25em 7.425em;
   }
 
   .main--lower {
@@ -564,6 +564,7 @@ ul {
   }
 
   .info--b {
+    margin-top: 0;
     border-left: 1px solid var(--clr-white-transparent);
   }
 
@@ -573,6 +574,12 @@ ul {
 
   .info--b .info__el {
     padding-left: 5.875em;
+  }
+}
+
+@media (min-width: 1030px) and (max-height: 1000px) {
+  .upper.split {
+    padding: 3.5em 4.25em 6.125em;
   }
 }
 
