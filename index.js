@@ -130,12 +130,11 @@ const populateTimesAndGeo = (data) => {
   if (dayPart === 'morning' || dayPart === 'afternoon') {
     iconSun.style.display = 'block'
     iconMoon.style.display = 'none'
-    SetNightmode('on')
+    SetNightmode('off')
   } else {
     iconMoon.style.display = 'block'
     iconSun.style.display = 'none'
-
-    SetNightmode('off')
+    SetNightmode('on')
   }
   partOfTheDay.textContent = `Good ${dayPart}`
 
