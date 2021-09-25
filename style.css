@@ -504,7 +504,7 @@ ul {
 
   /* Upper */
   .upper {
-    padding: 3.5em 4.25em 6.125em;
+    padding: 3.5em 10.5em 6.125em;
   }
 
   .upper.split {
@@ -548,7 +548,7 @@ ul {
   }
 
   .lower__content {
-    padding: 4.625em 10.5em 4.25em 7.425em;
+    padding: 4.625em 10.5em 4.25em 10.5em;
   }
 
   .main--lower {
