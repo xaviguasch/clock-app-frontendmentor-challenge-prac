@@ -596,6 +596,8 @@ ul {
 
   /* Lower */
   .lower__content {
-    padding: 4.625em 10.3125em 4.65em;
+    padding: 4.625em 0;
+    max-width: 1110px;
+    margin: 0 auto;
   }
 }
