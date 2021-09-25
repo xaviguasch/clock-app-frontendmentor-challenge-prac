@@ -87,7 +87,7 @@ const getGeolocation = async () => {
 const getTimes = async (data) => {
   const { geoData } = data
 
-  const API = 'http://worldtimeapi.org/api/timezone/'
+  const API = 'https://worldtimeapi.org/api/timezone/'
 
   const [area, city] = geoData.time_zone.split('/')
 
